@@ -1,0 +1,8 @@
+# GitHub Pages settings. Keep build inputs and email drafts off the published site.
+# (They are still readable in the public repository itself.)
+exclude:
+  - README.md
+  - build.py
+  - editions
+  - emails
+  - ru/emails

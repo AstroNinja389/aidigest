@@ -1,0 +1,3 @@
+# This site is a private-by-link digest. Please do not crawl or index it.
+User-agent: *
+Disallow: /

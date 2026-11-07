@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>What is RSA?</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main>
+<nav class="top"><a href="../index.html">All explainers</a></nav>
+<h1>What is RSA?</h1>
+
+<p><strong>The short version:</strong> RSA is a way of keeping information secret and proving who sent a message. It has quietly protected things like online shopping and banking for decades.</p>
+
+<h2>The idea behind it</h2>
+<p>Some things are easy to do but very hard to undo. Multiplying two numbers is easy. Starting from the answer and working out which two numbers were multiplied is much harder, especially when the numbers are enormous.</p>
+<p>RSA picks two huge prime numbers (numbers that can only be divided by one and themselves) and multiplies them together. The result is made public. The two original primes stay secret, and they are what you need to unlock anything protected by that public number. As far as anyone knows, there is no fast way to recover them from the product, as long as the numbers are big enough.</p>
+
+<h2>What "1024-bit" means</h2>
+<p>This is just the size of the number. A 1024-bit number has about 309 digits. The modern recommendation is longer: 2048 bits, which is a far bigger number. Bigger is not just a little safer, it is vastly harder to crack. That is why a weakness in the older, shorter size does not automatically threaten the newer one.</p>
+
+<h2>Two jobs RSA does</h2>
+<p><strong>Keeping secrets.</strong> Anyone can use your public number to lock a message, but only you, holding the primes, can unlock it.</p>
+<p><strong>Digital signatures.</strong> The same math lets you stamp a message in a way that only you could have made, but anyone can check. It is like a wax seal that everyone can inspect and nobody can copy. "Forging a signature" means making a fake seal that passes inspection.</p>
+
+<h2>Why it came up this week</h2>
+<p>Google DeepMind said AI models, working with human code-breaking experts, found two weaknesses in the older 1024-bit version. It says the modern version is not affected.</p>
+
+<p class="learn"><a href="../digests/2026-11-06.html">Back to the 6 November digest</a></p>
+</main>
+</body>
+</html>

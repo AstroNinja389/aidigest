@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Lesson 4: Finding the real building blocks</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">Inside AI</a> &middot; Lesson 4 of 5</nav>
+<h1>Finding the real building blocks</h1>
+
+<p><strong>The short version:</strong> if ideas are patterns spread across many neurons, then the neurons are the wrong unit to study. Researchers try to recover the patterns instead, and call them <em>features</em>.</p>
+
+<h2>Unmixing the chords</h2>
+<p>Imagine a recording of an orchestra and you want to pick out the individual instruments. Researchers train a second, helper network to read the first network's internal activity and re-express it as a much larger list of cleaner patterns, where only a few are active at any moment. The helper is called a <em>sparse autoencoder</em>, "sparse" because few patterns fire at once.</p>
+
+<h2>What turned up</h2>
+<p>In 2023, Anthropic reported doing this on a small language model and finding features with clear meanings, such as text in Arabic script or DNA sequences, where the original neurons had been mixtures (<a href="https://transformer-circuits.pub/2023/monosemantic-features/">the paper</a>; it is technical, but the opening sections are readable).</p>
+<p>In 2024, they scaled it up to a much larger model and found features for things like specific places and concepts. One responded to the Golden Gate Bridge. When researchers turned that feature up, the model began working the bridge into its answers, and Anthropic briefly released it as a public demo (<a href="https://aiweekly.co/alerts/anthropic-ships-golden-gate-claude-an-interpretability-demo">news summary</a>). It is a vivid sign that these features are connected to what the model does, not just labels we stick on afterward.</p>
+
+<h2>Be careful about the claims</h2>
+<p>The method has known limits. It may not find every feature, the features it finds can depend on choices the researchers make, and it is not proven that these are exactly the units the model itself uses. Most of this work comes from a few labs, so independent replication matters. Researchers actively debate how far it can go.</p>
+
+<p class="learn"><a href="3-superposition.html">Back</a> &middot; <a href="5-why-it-matters.html">Next: why this matters</a></p>
+</main>
+</body>
+</html>
