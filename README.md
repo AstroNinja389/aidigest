@@ -6,7 +6,7 @@ A plain-language daily AI news site plus a short email for one reader. Everythin
 - `editions/<date>.json`: the day's stories (the only file written by hand or by the daily task)
 - `build.py`: turns an edition into `digests/<date>.html` (full page) and `emails/<date>.html` (bullet email)
 - `explainers/`, `learn/`: short background pages the stories link to
-- `x-summary.html`: what researchers and journalists on X pointed to
+- `x-summary.html` (and `ru/`): an old page of what people on X pointed to; no longer linked from the site
 - `robots.txt`, `_config.yml`: keep search engines away and keep build inputs off the published site
 
 ## Russian version

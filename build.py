@@ -38,7 +38,6 @@ STR = {
         "also": "Also on the website today: %s.",
         "full": "Today&rsquo;s full edition",
         "all": "All explainers and lessons",
-        "xlabel": "From X today",
         "qotd": "Question of the day",
         "qotd_answer": "Answer to the question of the day",
         "see_end": "The answer is at the end of this email.",
@@ -60,7 +59,6 @@ STR = {
         "also": "Также сегодня на сайте: %s.",
         "full": "Полный выпуск за сегодня",
         "all": "Все пояснения и уроки",
-        "xlabel": "Из X за сегодня",
         "qotd": "Вопрос дня",
         "qotd_answer": "Ответ на вопрос дня",
         "see_end": "Ответ — в конце письма.",
@@ -202,8 +200,7 @@ def refresh_index(lang, t):
     path = os.path.join(HERE, t["prefix"] + t["home_file"])
     with open(path, encoding="utf-8") as f:
         text = f.read()
-    new = ("<!-- editions:start -->\n" + "\n".join(lines)
-           + '\n  <li><a href="x-summary.html">%s</a></li>\n  <!-- editions:end -->' % t["xlabel"])
+    new = "<!-- editions:start -->\n" + "\n".join(lines) + "\n  <!-- editions:end -->"
     text, n = re.subn(r"<!-- editions:start -->.*?<!-- editions:end -->", lambda m: new, text, flags=re.S)
     if n != 1:
         raise SystemExit(path + " is missing the editions markers.")
