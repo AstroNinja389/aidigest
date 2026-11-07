@@ -3,6 +3,13 @@
   "title": "AI this week: Friday 6 November 2026",
   "label": "Friday 6 November 2026 (sample)",
   "intro": "Sample edition. Underlined words lead to short, plain-language explanations. A disclosure: this digest is written by Claude, an AI made by Anthropic, which features in the lead story. Read that story with that in mind.",
+  "question": {
+    "q": "How does a chatbot decide which word to write next?",
+    "teaser": "It writes one word at a time, and each time it is making a very well-informed guess.",
+    "answer": "A chatbot turns every word into a long list of numbers, so that words with similar meanings sit close together, like neighbouring towns on a map. Those numbers then pass through many layers, and each layer adds context: whether &ldquo;bank&rdquo; means a river bank or a place for money, or who &ldquo;he&rdquo; refers to. At the end the model scores every possible next word and picks a likely one. It learned all this simply by practising, on an enormous amount of text, at predicting the next word. The article below explains it with almost no maths. Its authors stress that nobody yet fully understands how these models work inside.",
+    "url": "https://www.understandingai.org/p/large-language-models-explained-with",
+    "source": "Timothy B. Lee and Sean Trott, &ldquo;Large language models, explained with a minimum of math and jargon&rdquo; (Understanding AI, 2023)"
+  },
   "stories": [
     {
       "id": "metr",
