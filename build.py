@@ -7,8 +7,9 @@ Usage:
 English reads editions/<date>.json and writes digests/<date>.html and emails/<date>.html.
 Russian (--lang ru) reads editions/<date>.ru.json and writes ru/digests/<date>.html and
 ru/emails/<date>.html. The email is a bullet summary of the stories flagged "main", each
-linking to its story on the web edition. The list of editions in index.html (or
-ru/index.html) is refreshed between the markers.
+linking to its story on the web edition, plus a link to the same edition in the other
+language. The list of editions in en.html (or ru/index.html) is refreshed between the
+markers. The site's own index.html just forwards visitors to the Russian home page.
 
 The email needs the public site address. Pass --base-url, or the literal {{BASE_URL}}
 placeholder stays in so you can see what will be filled in.
@@ -25,6 +26,8 @@ STR = {
     "en": {
         "html_lang": "en",
         "prefix": "",
+        "home_file": "en.html",
+        "other": ("ru/", "По-русски"),
         "lead_prefix": r"^Lead story: ",
         "home": "Home",
         "learn_heading": "Learn something this week",
@@ -41,6 +44,8 @@ STR = {
     "ru": {
         "html_lang": "ru",
         "prefix": "ru/",
+        "home_file": "index.html",
+        "other": ("", "English version"),
         "lead_prefix": r"^Главная новость: ",
         "home": "Главная",
         "learn_heading": "Чему научиться на этой неделе",
@@ -101,10 +106,10 @@ def build_page(ed, t):
 </head>
 <body>
 <main>
-<nav class="top"><a href="../index.html">%s</a></nav>
+<nav class="top"><a href="../%s">%s</a></nav>
 <h1>%s</h1>
 <p class="small">%s</p>
-""" % (t["html_lang"], html.escape(ed["title"]), t["home"], html.escape(ed["title"]), ed["intro"]))
+""" % (t["html_lang"], html.escape(ed["title"]), t["home_file"], t["home"], html.escape(ed["title"]), ed["intro"]))
     for name, stories in sections(ed["stories"]):
         if name:
             out.append("<h2>%s</h2>" % html.escape(name))
@@ -118,8 +123,12 @@ def build_page(ed, t):
     return "\n".join(out)
 
 
-def build_email(ed, base, t):
+def build_email(ed, site, t):
+    """site is the site root; this language's pages live under site/<prefix>."""
+    base = site + "/" + t["prefix"].rstrip("/") if t["prefix"] else site
     page = "%s/digests/%s.html" % (base, ed["date"])
+    other_prefix, other_label = t["other"]
+    other_page = "%s/%sdigests/%s.html" % (site, other_prefix, ed["date"])
     main = [s for s in ed["stories"] if s.get("main")]
     if not 3 <= len(main) <= 5:
         raise SystemExit(t["need"] % len(main))
@@ -146,11 +155,12 @@ def build_email(ed, base, t):
 %s
 </ul>
 %s
-<p><a href="%s">%s</a> &middot; <a href="%s/index.html">%s</a></p>
+<p><a href="%s">%s</a> &middot; <a href="%s/%s">%s</a> &middot; <a href="%s">%s</a></p>
 <p style="font-size:14px;color:#5b6168">%s</p>
 </div>
 """ % (ed["date"], t["html_lang"], t["hello"], t["email_intro"], "\n".join(items), more,
-       page, t["full"], base, t["all"], ed.get("email_footer", ""))
+       page, t["full"], base, t["home_file"], t["all"], other_page, other_label,
+       ed.get("email_footer", ""))
 
 
 def refresh_index(lang, t):
@@ -161,7 +171,7 @@ def refresh_index(lang, t):
     for d in reversed(eds):
         e = load(d, lang)
         lines.append('  <li><a href="digests/%s.html">%s</a></li>' % (d, html.escape(e["label"])))
-    path = os.path.join(HERE, t["prefix"] + "index.html")
+    path = os.path.join(HERE, t["prefix"] + t["home_file"])
     with open(path, encoding="utf-8") as f:
         text = f.read()
     new = ("<!-- editions:start -->\n" + "\n".join(lines)
@@ -185,8 +195,6 @@ def main():
     base = "{{BASE_URL}}"
     if "--base-url" in args:
         base = args[args.index("--base-url") + 1].rstrip("/")
-    if lang == "ru":
-        base = base + "/ru"
     ed = load(date, lang)
     for sub in ("digests", "emails"):
         os.makedirs(os.path.join(HERE, t["prefix"] + sub), exist_ok=True)

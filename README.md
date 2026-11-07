@@ -10,7 +10,7 @@ A plain-language daily AI news site plus a short email for one reader. Everythin
 - `robots.txt`, `_config.yml`: keep search engines away and keep build inputs off the published site
 
 ## Russian version
-`ru/` mirrors the whole site (home, explainers, lessons, X page). Each edition has a Russian twin, `editions/<date>.ru.json`, with the same story ids and the same `main` flags. Build it with `python3 -I build.py <date> --lang ru`, which writes `ru/digests/<date>.html` and `ru/emails/<date>.html`. The English and Russian pages link to each other from their home pages.
+`ru/` mirrors the whole site (home, explainers, lessons, X page). Each edition has a Russian twin, `editions/<date>.ru.json`, with the same story ids and the same `main` flags. Build it with `python3 -I build.py <date> --lang ru`, which writes `ru/digests/<date>.html` and `ru/emails/<date>.html`. The site's main address (`index.html`) forwards to the Russian home page, `ru/index.html`; the English home page is `en.html`. The two home pages link to each other, and each email links to the same edition in the other language.
 
 ## Daily flow
 1. Gather stories from checked sources (the source list is kept outside this repository). AI-related news only.
