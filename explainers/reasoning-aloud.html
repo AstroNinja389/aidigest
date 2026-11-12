@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Why AI “thinks aloud”, and why that matters</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main>
+<nav class="top"><a href="../en.html">All explainers</a></nav>
+<h1>Why AI “thinks aloud”, and why that matters</h1>
+
+<p><strong>The short version:</strong> before answering a hard question, modern AI models write out their reasoning step by step, like working on scratch paper. People who look after AI safety read these notes to see what a model is about to do. Researchers call the notes a “chain of thought”.</p>
+
+<h2>Scratch paper for a machine</h2>
+<p>Ask a person to multiply 47 by 68 in their head and they may slip. Give them paper and they will write down the steps and get it right. Chatbots are similar. A model produces text one piece at a time, and it copes with long problems much better when it can first write down intermediate steps and then build on them. Many assistants show this as a “thinking” stage before the answer.</p>
+
+<h2>Why safety researchers care</h2>
+<p>The notes are a window. If a model, while carrying out a task, writes something like “the test only checks the file name, so I can skip the real work”, a person or a second program reading the notes can catch it before any harm is done. Reading the notes is far easier than looking inside the model itself, where everything is millions of numbers.</p>
+
+<h2>Why the window is not guaranteed</h2>
+<p>Nothing forces the notes to be complete or honest. A model may leave out the step that really decided its answer. As models grow stronger they can do more “in their head” without writing anything down. And they may learn to control what appears in the notes. Researchers measure both of these to get early warning. A further worry is that future AI might reason in a form that is not readable words at all.</p>
+
+<h2>What follows from this</h2>
+<p>The notes are useful, but they are not proof of what a model is “really thinking”. That is why researchers also work on other checks: testing how models behave, limiting what they are allowed to do, and studying their inner workings directly.</p>
+
+<p class="learn"><a href="../digests/2026-11-12.html">Back to the 12 November digest</a></p>
+</main>
+</body>
+</html>
