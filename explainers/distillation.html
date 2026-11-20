@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>What “distillation” means in AI</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main>
+<nav class="top"><a href="../en.html">All explainers</a></nav>
+<h1>What “distillation” means in AI, and why companies guard against it</h1>
+
+<p><strong>The short version:</strong> distillation is teaching a new AI model by letting it learn from the answers of an existing, stronger one, the way a student learns by copying a master’s worked examples. It is cheap and effective, which is why companies use it on their own models and try to stop rivals from using it on theirs.</p>
+
+<h2>Teacher and student</h2>
+<p>Training a top AI model from scratch takes months and enormous amounts of computing power. A shortcut is to take a model that already works well (the “teacher”), ask it a great many questions, and train a smaller or newer model (the “student”) to give the same answers. The student does not get the teacher’s inner workings, only its outputs, but that is often enough to pick up much of its skill. The name comes from distilling a liquid: boiling it down to what matters.</p>
+
+<h2>When it is fine and when it is not</h2>
+<p>Companies routinely distil their own big models into smaller, cheaper ones for phones or quick replies. The trouble starts when someone does it to a rival’s model without permission, by sending it millions of questions through ordinary accounts. The terms of service of the big AI companies forbid this, and they treat it as taking the results of their very expensive work for free.</p>
+
+<h2>Why the “thinking” is the prize</h2>
+<p>Modern models often write out step-by-step reasoning before answering. That reasoning is especially useful for training a student, because it shows <em>how</em> to reach an answer, not just the answer. So companies often hide it from users, and people trying to copy a model try to trick it into revealing it.</p>
+
+<h2>What follows from this</h2>
+<p>Defences include training models to refuse such tricks, filters that spot suspicious questions, and closing accounts that ask in bulk. Some companies also argue that copying matters for safety: a copied model may carry over dangerous skills without the safeguards the original had.</p>
+
+<p class="learn"><a href="../digests/2026-11-20.html">Back to the 20 November digest</a></p>
+</main>
+</body>
+</html>
